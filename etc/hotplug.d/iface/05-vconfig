@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if [ "$ACTION" = ifup ]; then
+	if [ "$DEVICE" = "eth1.838" ]; then
+		for i in 0 1 2 3 4 5 6 7; do
+			/sbin/vconfig set_egress_map $DEVICE $i 4 > /dev/null
+		done
+	fi
+	if [ "$DEVICE" = "eth1.840" ]; then
+		for i in 0 1 2 3 4 5 6 7; do
+			/sbin/vconfig set_egress_map $DEVICE $i 5 > /dev/null
+		done
+	fi
+fi
