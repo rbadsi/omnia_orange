@@ -1,0 +1,85 @@
+
+config interface 'loopback'
+	option ifname 'lo'
+	option proto 'static'
+	option ipaddr '127.0.0.1'
+	option netmask '255.0.0.0'
+
+config globals 'globals'
+	option ula_prefix 'fd24:cd98:2638::/48'
+
+config interface 'lan'
+	option ifname 'eth0'
+	option force_link '1'
+	option type 'bridge'
+	option proto 'static'
+	option netmask '255.255.255.0'
+	option ip6assign '60'
+	option ipaddr '192.168.0.1'
+	option igmp_snooping '1'
+	option dns '127.0.0.1'
+	option dns_search 'home.loc'
+
+config interface 'lantv'
+	option ifname 'eth2'
+	option proto 'static'
+	option netmask '255.255.255.0'
+	option ipaddr '192.168.2.1'
+	option igmp_snooping '1'
+
+config interface 'wan'
+        option ifname 'eth1.832'
+	option proto 'dhcp'
+	option peerdns '0'
+	option broadcast '1'
+	option vendorid 'sagem'
+	option reqopts '0x01 0x15 0x28 0x51 0x58 0x59 0x90'
+	option sendopts '0x4D:2b46535644534c5f6c697665626f782e496e7465726e65742e736f66746174686f6d652e4c697665626f7833 0x5a:00000000000000000000006674692fxxxxxxxxxxxxxx'
+
+config interface 'wantv'
+	option type 'bridge'
+	option proto 'dhcp'
+	option ifname 'eth1.838 eth1.840'
+	option broadcast '1'
+	option defaultroute '0'
+	option peerdns '0'
+	option vendorid 'sagem -o'
+	option reqopts '0x01 0x03 0x2A 0x48 0x79'
+	option sendopts '0x4D:2746535644534c5f6c697665626f782e4d4c54562e736f66746174686f6d652e4c697665626f7833 0x3D:01xxxxxxxxxxxx'
+
+config interface 'wan6'
+	option ifname '@wan'
+	option proto 'none'
+
+config interface 'wan838'
+	option ifname 'eth1.838'
+	option proto 'none'
+
+config interface 'wan840'
+	option ifname 'eth1.840'
+	option proto 'none'
+
+config switch
+	option name 'switch0'
+	option reset '1'
+	option enable_vlan '1'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '1'
+	option ports '0 1 2 3 5'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '2'
+	option ports '4 6'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '838'
+	option ports '4t 6t'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '840'
+	option ports '4t 6t'

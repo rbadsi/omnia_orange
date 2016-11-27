@@ -1,0 +1,15 @@
+config igmpproxy
+	option quickleave 1
+
+config phyint wantv
+        option network wantv
+        option direction upstream
+        list altnet "0.0.0.0/0"
+
+config phyint lan
+        option network lan
+        option direction downstream
+
+config phyint lantv
+	option network lantv
+	option direction downstream
