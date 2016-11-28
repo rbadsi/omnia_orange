@@ -15,7 +15,7 @@ config zone
 config zone
 	option name 'lantv'
 	list network 'lantv'
-	option input 'REJECT'
+	option input 'ACCEPT'
 	option output 'ACCEPT'
 	option forward 'ACCEPT'	
 

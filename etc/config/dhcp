@@ -33,7 +33,7 @@ config dhcp 'lantv'
 	option limit '150'
 	option leasetime '12h'
 	option ignore '0'
-	list dhcp_option '6,192.168.0.1'
+	list dhcp_option '6,81.253.149.6,80.10.246.136'
 
 config dhcp 'wan'
 	option interface 'wan'
