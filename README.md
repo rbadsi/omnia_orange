@@ -21,6 +21,11 @@ N'oubliez pas de renseigner votre nom d'utilisateur (fti/*******) et l'adresse M
 * Le routeur est devenu innacessible: Si vous copiez-collé la configuration compléte votre réseau LAN passera en 192.168.0.0/24, le routeur sera en 192.168.0.1
 * Le Replay marche mais pas la TV: Verifiez que dans System/Startup igmpproxy est enabled (donc le bouton disabled apparait et que vous avez appuyez sur le bouton start
 
+## Exemple de résultat
+* attention dans l'exemple ci-dessous j'ai conservé l'adressage d'origine du routeur en 192.168.1.1 (mais cela fonctionne quand même)
+
+[[https://github.com/acabrol/omnia_orange/blob/master/config_interfaces_omnia_orange.jpg]]
+
 ## Paquets à installer
 *  luci-app-upnp
 *  igmpproxy
