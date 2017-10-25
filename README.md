@@ -24,7 +24,7 @@ N'oubliez pas de renseigner votre nom d'utilisateur (fti/*******) et l'adresse M
 ## Exemple de résultat
 * attention dans l'exemple ci-dessous j'ai conservé l'adressage d'origine du routeur en 192.168.1.1 (mais cela fonctionne quand même)
 
-[[https://github.com/acabrol/omnia_orange/blob/master/config_interfaces_omnia_orange.jpg]]
+![Image etat des interfaces](https://github.com/acabrol/omnia_orange/blob/master/config_interfaces_omnia_orange.jpg)
 
 ## Paquets à installer
 *  luci-app-upnp
