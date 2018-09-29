@@ -26,7 +26,7 @@ config interface 'wan'
 	option broadcast '1'
 	option vendorid 'sagem'
 	option reqopts '0x01 0x15 0x28 0x51 0x58 0x59 0x90'
-	option sendopts '0x4D:2b46535644534c5f6c697665626f782e496e7465726e65742e736f66746174686f6d652e4c697665626f7833 0x5a:00000000000000000000006674692fxxxxxxxxxxxxxx'
+	option sendopts '0x4D:2b46535644534c5f6c697665626f782e496e7465726e65742e736f66746174686f6d652e4c697665626f7833 0x5a:00000000000000000000001a0900000558010341010d6674692fxxxxxxxxxxxxxx'
 	option hostname 'Livebox-XXXX'
 
 config interface 'wan6'
@@ -80,4 +80,3 @@ config switch_vlan
 	option vlan '4'
 	option vid '840'
 	option ports '4t 6t'
-

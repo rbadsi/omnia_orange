@@ -6,15 +6,15 @@ Le décodeur TV doit être branché sur le port LAN 4.
 
 N'oubliez pas de renseigner votre nom d'utilisateur (fti/*******) et l'adresse MAC de votre Livebox dans le fichier /etc/config/network.
 
-## Générer le nom d'utilisateur 
+## Générer le nom d'utilisateur
 * executez le script ./genFibreID.sh ******* (sans le fti/ devant)
-* placez le dans la rubrique wan de etc/config/network aprés la valeur 0x5a: et à la place de 00000000000000000000006674692fxxxxxxxxxxxx
+* placez le dans la rubrique wan de etc/config/network aprés la valeur 0x5a: et à la place de 00000000000000000000001a0900000558010341010d6674692fxxxxxxxxxxxx
 
 ## Ajouter la mac adresse de la Livebox
 * Retournez la livebox connecté au boitié fibre
 * dessous vous trouverez l'adresse dans le champ @mac:
 * ajoutez 4 en hexadecimal aux deux dernieres charactére de l'adresse et vous obtiendrez l'adresse mac vue côté fibre
-* enlevez les : et remplacer les deux derniers charactére par la valeur hexadecimal calculé 
+* enlevez les : et remplacer les deux derniers charactére par la valeur hexadecimal calculé
 * remplacez dans la rubrique wantv de etc/config/network les xxxxxxxxxxxx aprés 0x3D:01
 
 ## Problémes connus
@@ -34,4 +34,3 @@ N'oubliez pas de renseigner votre nom d'utilisateur (fti/*******) et l'adresse M
 *  Configuration IPv6
 *  Replay
 *  Changer la priorité des requêtes DHCP (nécessaire pour établir la connexion sur certaines lignes)
-
