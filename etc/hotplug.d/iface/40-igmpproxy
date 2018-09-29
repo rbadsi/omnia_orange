@@ -1,0 +1,2 @@
+#!/bin/sh
+[ "$INTERFACE" = wan ] && [ "$ACTION" = ifup ] && /etc/init.d/igmpproxy restart

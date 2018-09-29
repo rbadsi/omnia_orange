@@ -7,48 +7,20 @@ config defaults
 
 config zone
 	option name 'lan'
-	list network 'lan'
-	option input 'ACCEPT'
 	option output 'ACCEPT'
 	option forward 'ACCEPT'
-
-config zone
-	option name 'lantv'
-	list network 'lantv'
 	option input 'ACCEPT'
-	option output 'ACCEPT'
-	option forward 'ACCEPT'	
+	option log '1'
+	option network 'lan'
 
 config zone
 	option name 'wan'
-	list network 'wan'
-	list network 'wan6'
 	option input 'REJECT'
 	option output 'ACCEPT'
 	option forward 'REJECT'
 	option masq '1'
 	option mtu_fix '1'
-
-config zone
-	option name 'wantv'
-	list network 'wantv'
-	option input 'REJECT'
-	option output 'ACCEPT'
-	option forward 'REJECT'
-	option masq '1'
-	option mtu_fix '1'
-
-config forwarding
-	option src 'lan'
-	option dest 'wan'
-
-config forwarding
-	option src 'lantv'
-	option dest 'wan'
-
-config forwarding
-	option src 'lantv'
-	option dest 'wantv'
+	option network 'wan wan6'
 
 config rule
 	option name 'Allow-DHCP-Renew'
@@ -63,13 +35,6 @@ config rule
 	option src 'wan'
 	option proto 'icmp'
 	option icmp_type 'echo-request'
-	option family 'ipv4'
-	option target 'ACCEPT'
-
-config rule
-	option name 'Allow-IGMP'
-	option src 'wan'
-	option proto 'igmp'
 	option family 'ipv4'
 	option target 'ACCEPT'
 
@@ -115,22 +80,6 @@ config rule
 	option family 'ipv6'
 	option target 'ACCEPT'
 
-config rule
-	option name 'Allow-ICMPv6-Forward'
-	option src 'wan'
-	option dest '*'
-	option proto 'icmp'
-	list icmp_type 'echo-request'
-	list icmp_type 'echo-reply'
-	list icmp_type 'destination-unreachable'
-	list icmp_type 'packet-too-big'
-	list icmp_type 'time-exceeded'
-	list icmp_type 'bad-header'
-	list icmp_type 'unknown-header-type'
-	option limit '1000/sec'
-	option family 'ipv6'
-	option target 'ACCEPT'
-
 config include
 	option path '/etc/firewall.user'
 
@@ -146,22 +95,50 @@ config include
 	option path '/etc/firewall.d/without_reload/firewall.include.sh'
 	option reload '0'
 
-config rule
-	option src 'wan'
-	option dest 'lan'
-	option proto 'esp'
-	option target 'ACCEPT'
-
-config rule
-	option src 'wan'
-	option dest 'lan'
-	option dest_port '500'
-	option proto 'udp'
-	option target 'ACCEPT'
-
 config include 'miniupnpd'
 	option type 'script'
 	option path '/usr/share/miniupnpd/firewall.include'
 	option family 'any'
 	option reload '1'
+
+
+config zone
+	option input 'REJECT'
+	option forward 'REJECT'
+	option name 'wan_tv'
+	option masq '1'
+	option mtu_fix '1'
+	option output 'ACCEPT'
+	option network 'wan_tv'
+
+config zone
+	option name 'lan_tv'
+	option network 'lan_tv'
+	option input 'ACCEPT'
+	option output 'ACCEPT'
+	option forward 'ACCEPT'
+
+config rule
+	option target 'ACCEPT'
+	option src 'lan_tv'
+	option dest 'wan'
+	option name 'DNS&NTP TV'
+	option proto 'udp'
+	option dest_port '53 123'
+
+config forwarding
+	option dest 'wan'
+	option src 'lan'
+
+config rule
+	option target 'ACCEPT'
+	option src 'lan_tv'
+	option dest 'wan'
+	option name 'VOD'
+	option proto 'tcp'
+	option dest_port '443'
+
+config forwarding
+	option dest 'wan_tv'
+	option src 'lan_tv'
 
